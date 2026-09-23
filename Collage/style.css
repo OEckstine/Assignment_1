@@ -1,0 +1,100 @@
+body {
+  background-image: url("assets/background2.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.corners {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  z-index: 1;
+}
+
+.corners img {
+  max-width: 50%;
+  height: auto;
+}
+
+.top-left {
+  justify-self: start;
+  align-self: start;
+}
+.top-right {
+  justify-self: end;
+  align-self: start;
+}
+.bottom-left {
+  justify-self: start;
+  align-self: end;
+}
+.bottom-right {
+  justify-self: end;
+  align-self: end;
+}
+
+.static-images {
+  position: fixed;
+  z-index: -1;
+  left: 20px;
+  right: 20px;
+  bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.static-images img {
+  width: 280px;
+  height: auto;
+  object-fit: contain;
+}
+
+.roaming-cat {
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(var(--rot)) scale(0);
+  animation: pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes pop-in {
+  to {
+    transform: rotate(var(--rot)) scale(1.5);
+  }
+}
+
+.clickable-cat {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: oldfont;
+  src: url("assets/Canterbury.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cat-prompt {
+  font-family: oldfont;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  font-size: 100px;
+  color: #621919;
+  text-align: center;
+}
+
+.cat-prompt.visible {
+  opacity: 1;
+}
